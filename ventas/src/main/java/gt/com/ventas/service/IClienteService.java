@@ -20,7 +20,7 @@ public interface IClienteService {
 
     Cliente create(Cliente cliente);
 
-    Cliente update(Cliente cliente, Integer id);
+    Cliente update(Cliente cliente);
 
     void delete(Integer id);
 

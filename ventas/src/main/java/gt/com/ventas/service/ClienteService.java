@@ -37,7 +37,7 @@ public class ClienteService implements IClienteService {
     }
 
     @Override
-    public Cliente update(Cliente cliente, Integer id) {
+    public Cliente update(Cliente cliente) {
         return clienteRepo.save(cliente);
     }
 
