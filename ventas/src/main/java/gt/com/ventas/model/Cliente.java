@@ -11,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import lombok.Data;
 
 /**
@@ -27,7 +29,9 @@ public class Cliente implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idCliente;
 
-    @Column(name = "nombre")
+    @NotNull
+    @NotBlank(message = "El nombre no debe ir vacio")
+    @Column(name = "nombre", nullable = false)
     private String nombre;
 
     @Column(name = "direccion")
