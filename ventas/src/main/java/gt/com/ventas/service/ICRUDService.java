@@ -4,23 +4,22 @@
  */
 package gt.com.ventas.service;
 
-import gt.com.ventas.model.Cliente;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 /**
  *
  * @author malopez
  */
-public interface IClienteService {
+public interface ICRUDService<T> {
 
-    ArrayList<Cliente> findAll();
+    List<T> findAll();
 
-    Optional<Cliente> findById(Integer id);
+    Optional<T> findById(Integer id);
 
-    Cliente create(Cliente cliente);
+    T create(T model);
 
-    Cliente update(Cliente cliente);
+    T update(T model);
 
     void delete(Integer id);
 
