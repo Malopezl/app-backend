@@ -4,17 +4,14 @@
  */
 package gt.com.ventas.model;
 
-import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import lombok.Data;
 
 /**
@@ -23,24 +20,26 @@ import lombok.Data;
  */
 @Entity
 @Data
-@Table(name = "Cliente")
-public class Cliente implements Serializable {
+@Table(name = "DetalleVenta")
+public class DetalleVenta {
 
     @Id
-    @Column(name = "idCliente")
+    @Column(name = "idDetalleVenta")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idCliente;
+    private Integer idDetalleVenta;
 
-    @NotNull
-    @NotBlank(message = "El nit no debe ir vacio")
-    @Column(name = "nit")
-    private String nit;
+    @Column(name = "cantidad")
+    private Integer cantidad;
 
-    @Column(name = "correo")
-    private String correo;
+    @Column(name = "precio_unitario")
+    private Double precioUnitario;
 
-    @OneToOne
-    @JoinColumn(name = "idPersona", nullable = false)
-    private Persona persona;
+    @ManyToOne
+    @JoinColumn(name = "idVenta", nullable = false)
+    private Venta venta;
+
+    @ManyToOne
+    @JoinColumn(name = "idProducto", nullable = false)
+    private Producto producto;
 
 }
