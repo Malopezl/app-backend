@@ -39,7 +39,7 @@ public class VentaService implements ICRUDService<Venta> {
     @Override
     public Venta create(Venta venta) {
         venta.getDetalleVentaList().forEach(detalleVenta -> {
-            Optional<Producto> producto = productoRepository.findById(detalleVenta.getProductos().getIdProducto());
+            Optional<Producto> producto = productoRepository.findById(detalleVenta.getProducto().getIdProducto());
             if (producto.isPresent()) {
                 Double precioTotal = producto.get().getPrecio() * detalleVenta.getCantidad().doubleValue();
                 detalleVenta.setPrecioUnitario(producto.get().getPrecio());
