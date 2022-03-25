@@ -4,14 +4,11 @@
  */
 package gt.com.ventas.model;
 
-import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -23,24 +20,23 @@ import lombok.Data;
  */
 @Entity
 @Data
-@Table(name = "Cliente")
-public class Cliente implements Serializable {
+@Table(name = "Persona")
+public class Persona {
 
     @Id
-    @Column(name = "idCliente")
+    @Column(name = "idPersona")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idCliente;
+    private Integer idPersona;
 
     @NotNull
-    @NotBlank(message = "El nit no debe ir vacio")
-    @Column(name = "nit")
-    private String nit;
+    @NotBlank(message = "El nombre no debe ir vacio")
+    @Column(name = "nombre", nullable = false)
+    private String nombre;
 
-    @Column(name = "correo")
-    private String correo;
+    @Column(name = "direccion")
+    private String direccion;
 
-    @OneToOne
-    @JoinColumn(name = "idPersona", nullable = false)
-    private Persona persona;
+    @Column(name = "telefono")
+    private String telefono;
 
 }
