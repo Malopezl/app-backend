@@ -4,6 +4,7 @@
  */
 package gt.com.ventas.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,12 +35,16 @@ public class DetalleVenta {
     @Column(name = "precio_unitario")
     private Double precioUnitario;
 
+    @Column(name = "precio_total")
+    private Double precioTotal;
+
     @ManyToOne
     @JoinColumn(name = "idVenta", nullable = false)
+    @JsonIgnore
     private Venta venta;
 
     @ManyToOne
     @JoinColumn(name = "idProducto", nullable = false)
-    private Producto producto;
+    private Producto productos;
 
 }
